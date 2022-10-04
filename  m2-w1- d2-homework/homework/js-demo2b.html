@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>  
+<title>My Second Web Page</title>
+
+<link rel="stylesheet" href="demo.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+       $("#btn").click(function(event) {
+
+        $('table').append('<caption></caption>')
+        $('table').append('<thead></thead>');
+        $('thead').append('<tr id="showheading"></tr>');
+        $('#showheading').append('<th></th>');
+        $('tbody').append('<tr id="showcalories"></tr>');
+        $('#showcalories').append('<td></td>');
+        $('tbody').append('<tr id="showfat"></tr>');
+        $('#showfat').append('<td></td>');
+        $('tfoot').append('<tr id="showven"></tr>');
+        $('#showven').append('<td></td>');
+
+        $.getJSON('/jq/data.json', function(jqdata) {
+            $('table caption:first-child').append(title);
+            $('#showheading th:nth-child(2)').append(jqdata.heading + jqdata.head1 + jqdata.head2 + jqdata.head3 + jqdata.head4);
+            $('#showcalories td:nth-child(3)').append(subheadcal + jqdata.cal1 + jqdata.cal2 + jqdata.cal3 + jqdata.cal4);
+            $('#showfat td:nth-child(4)').append(subheadfat + jqdata.fat1 + jqdata.fat2 + jqdata.fat3 + jqdata.fat4);
+            $('#showven td:last-child').append(subheadven + jqdata.ven1 + jqdata.ven2 + jqdata.ven3 + jqdata.ven4);            
+        })
+    })
+})
+    
+    
+    $(document).ready(function() {
+        $('#showinfo').css('margin-top', 35);
+    });
+ </script>
+</head> 	
+<body>
+
+<div id="container">
+
+<header>My Web Site Brand</header>
+<nav>
+	<ul>
+    <li><a href="js-demo2.html">Home</a></li>
+    <li><a href="js-demo2b.html">About</a></li>
+    <li><a href="js-demo2d.html">Gallery</a></li>
+    <li><a href="js-demo2c.html">Contact</a></li>
+	</ul>
+</nav>
+
+<main>
+ <h1>My Second Heading</h1>
+  <p class="intro">My Second paragraph.</p>
+</main>
+
+<div id="showinfo">
+   
+   <table>
+        <!-- <caption>Calories Comparison of Popular Burgers</caption>
+        <thead>
+            <tr id="showheading">
+                <th>Type</th>
+                <th>BigMac</th>
+                <th>Whopper</th>
+                <th>Dave's Double</th>
+                <th>Whataburger</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="showcalories">
+                <td>Calories</td>
+                <td>563</td>
+                <td>677</td> 
+                <td>870</td>
+                <td>590</td>
+            </tr>
+            <tr id="showfat">
+                <td>Fat</td>
+                <td>30gm</td> 
+                <td>40gm</td>
+                <td>51gm</td>
+                <td>25gm</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr id="showven">
+                <td>Vendor</td>
+                <td>MacD</td>
+                <td>Burger King</td>
+                <td>Wendys</td>
+                <td>Whataburger</td>
+            </tr>
+        </tfoot> -->  
+    </table>
+</div>
+<input type = "button" id = "btn" value = "Load Data" style="margin-top:20px;" />
+</body>
+<footer>&copy; Copyright 2020</footer>
+
+</div>
+
+</html>
