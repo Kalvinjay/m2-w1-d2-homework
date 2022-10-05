@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>  
+<title>My Second Web Page</title>
+
+<link rel="stylesheet" href="demo.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+       $("#btn").click(function(event) {
+
+        $('<caption></caption>').appendTo('table');
+        
+        $('<thead></thead>').appendTo('table');
+        $('<tr id="showheading"></tr>').appendTo('thead');
+        $('<th class="head1"></th>').appendTo('#showheading');
+        $('<th class="head2"></th>').appendTo('#showheading');
+        $('<th class="head3"></th>').appendTo('#showheading');
+        $('<th class="head4"></th>').appendTo('#showheading');
+        $('<th class="head5"></th>').appendTo('#showheading');
+
+        $('<tbody></tbody>').appendTo('table');
+        $('<tr id="showcalories"></tr>').appendTo('tbody');
+        $('<td></td>').appendTo('#showcalories');
+        $('<td></td>').appendTo('#showcalories');
+        $('<td></td>').appendTo('#showcalories');
+        $('<td></td>').appendTo('#showcalories');
+        $('<td></td>').appendTo('#showcalories');
+
+        $('<tr id="showfat"></tr>').appendTo('tbody');
+        $('<td class="fat1"></td>').appendTo('#showfat');
+        $('<td class="fat2"></td>').appendTo('#showfat');
+        $('<td class="fat3"></td>').appendTo('#showfat');
+        $('<td class="fat4"></td>').appendTo('#showfat');
+        $('<td class="fat5"></td>').appendTo('#showfat');
+        
+        $('<tfoot></tfoot>').appendTo('table');
+        $('<tr id="showven"></tr>').appendTo('tfoot'); 
+        $('<td class="ven1"></td>').appendTo('#showven');
+        $('<td class="ven2"></td>').appendTo('#showven');
+        $('<td class="ven3"></td>').appendTo('#showven');
+        $('<td class="ven4"></td>').appendTo('#showven');
+        $('<td class="ven5"></td>').appendTo('#showven');
+
+        $.getJSON('jq/data.json', function(jqdata) {
+            $('table caption:first-child').append(jqdata.title);
+
+            $('#showheading th.head1').append(jqdata.heading);
+            $('#showheading th.head2').append(jqdata.head1);
+            $('#showheading th.head3').append(jqdata.head2);
+            $('#showheading th.head4').append(jqdata.head3);
+            $('#showheading th.head5').append(jqdata.head4);
+
+            $('#showfat td.fat1:first-child').append(jqdata.subheadfat);
+            $('#showfat td.fat2').append(jqdata.fat1);
+            $('#showfat td.fat3').append(jqdata.fat2);
+            $('#showfat td.fat4').append(jqdata.fat3);
+            $('#showfat td.fat5').append(jqdata.fat4);
+            
+            $('#showcalories td:first-child').append(jqdata.subheadcal);
+            $('#showcalories td:nth-child(2)').append(jqdata.cal1);
+            $('#showcalories td:nth-child(3)').append(jqdata.cal2);
+            $('#showcalories td:nth-child(4)').append(jqdata.cal3);
+            $('#showcalories td:last-child').append(jqdata.cal4);
+            
+            $('#showven td.ven1').append(jqdata.subheadven);
+            $('#showven td.ven2').append(jqdata.ven1);
+            $('#showven td.ven3').append(jqdata.ven2);
+            $('#showven td.ven4').append(jqdata.ven3);
+            $('#showven td.ven5').append(jqdata.ven4);
+        });
+    });
+});
+ </script>
+</head> 	
+<body>
+
+<div id="container">
+
+<header>My Web Site Brand</header>
+<nav>
+	<ul>
+    <li><a href="js-demo2.html">Home</a></li>
+    <li><a href="js-demo2b.html">About</a></li>
+    <li><a href="js-demo2d.html">Gallery</a></li>
+    <li><a href="js-demo2c.html">Contact</a></li>
+	</ul>
+</nav>
+
+<main>
+ <h1>My Second Heading</h1>
+  <p class="intro">My Second paragraph.</p>
+</main>
+
+<div id="showinfo">
+   
+   <table>
+        <!-- <caption>Calories Comparison of Popular Burgers</caption>
+        <thead>
+            <tr id="showheading">
+                <th>Type</th>
+                <th>BigMac</th>
+                <th>Whopper</th>
+                <th>Dave's Double</th>
+                <th>Whataburger</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="showcalories">
+                <td>Calories</td>
+                <td>563</td>
+                <td>677</td> 
+                <td>870</td>
+                <td>590</td>
+            </tr>
+            <tr id="showfat">
+                <td>Fat</td>
+                <td>30gm</td> 
+                <td>40gm</td>
+                <td>51gm</td>
+                <td>25gm</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr id="showven">
+                <td>Vendor</td>
+                <td>MacD</td>
+                <td>Burger King</td>
+                <td>Wendys</td>
+                <td>Whataburger</td>
+            </tr>
+        </tfoot> -->  
+    </table>
+</div>
+<input type = "button" id = "btn" value = "Load Data" style="margin-top:20px;" />
+</body>
+<footer>&copy; Copyright 2020</footer>
+
+</div>
+
+</html>
